@@ -6,7 +6,7 @@ Add google analytics params to your URLs.
 
 Add this line to your application's Gemfile:
 
-    gem 'utm'
+    gem 'urchin_tracking_module'
 
 And then execute:
 
@@ -14,11 +14,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install utm
+    $ gem install urchin_tracking_module
 
 ## Usage
 
-    require 'utm'
+    require 'urchin_tracking_module'
 
     UTM("http://example.com/#/welcome",
       utm_source: "newsletter_de",
@@ -43,11 +43,11 @@ Your thought's/improvements are welcome :)
   * remove dependency to Rails
   * remove bonusbox specific `src` param or make this kind of
   additions configurable.
-  * `Utm.configure {|c| c[:utm_source] => nil }` would generate
+  * `UrchinTrackingModule.configure {|c| c[:utm_source] => nil }` would generate
   invalid params. It should pick up defaults instead.
-  * `Utm.configure {|c| c[:utm_source] => 'my_app' }` could have a
+  * `UrchinTrackingModule.configure {|c| c[:utm_source] => 'my_app' }` could have a
   configuration object instead of a hash, to become
-  `Utm.configure {|c| c.utm_source = 'my_app' }`
+  `UrchinTrackingModule.configure {|c| c.utm_source = 'my_app' }`
 
 ## Code status
 
