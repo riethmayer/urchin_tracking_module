@@ -22,7 +22,7 @@ class UrchinTrackingModule
   end
 
   def defaults
-    Utm::Defaults.config
+    Defaults.config
   end
   private :defaults
 
