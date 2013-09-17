@@ -51,7 +51,7 @@ Your thought's/improvements are welcome :)
 
 ## Code status
 
-* [![Build Status](https://api.travis-ci.org/bonusboxme/urchin_tracking_module.png)](https://travis-ci.org/bonusboxme/urchin_tracking_module)
+[![Build Status](https://travis-ci.org/bonusboxme/urchin_tracking_module.png?branch=master)](https://travis-ci.org/bonusboxme/urchin_tracking_module)
 
 ## License
 
