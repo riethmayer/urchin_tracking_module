@@ -3,7 +3,7 @@ require 'singleton'
 require 'active_support/core_ext/hash/slice'
 
 def UTM(url, params={})
-  Utm.new(url).tracking(params)
+  UrchinTrackingModule.new(url).tracking(params)
 end
 
 class UrchinTrackingModule
