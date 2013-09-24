@@ -26,7 +26,7 @@ describe UrchinTrackingModule do
     context 'when empty param' do
       before { params.delete(:utm_content) }
 
-      it 'does not tracked' do
+      it 'is not tracked' do
         uri = subject.tracking(params)
         expect(uri).not_to match(/utm_content=/)
       end
