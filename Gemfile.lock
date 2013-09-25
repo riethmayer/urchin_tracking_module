@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    urchin_tracking_module (1.0.4)
+    urchin_tracking_module (1.0.5)
 
 GEM
   remote: https://rubygems.org/
