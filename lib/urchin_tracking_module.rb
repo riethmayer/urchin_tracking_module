@@ -15,8 +15,10 @@ class UrchinTrackingModule
 
   def tracking(params=defaults)
     filtered_params(params).inject(@url) do |url,(name,value)|
-      url = add_param(url, "#{name}", value)
-      url = add_param(url, "src", value) if name == :utm_source
+      unless value.nil?
+        url = add_param(url, "#{name}", value)
+        url = add_param(url, "src", value) if name == :utm_source
+      end
       url
     end
   end
