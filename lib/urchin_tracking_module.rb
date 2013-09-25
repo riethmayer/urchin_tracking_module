@@ -1,6 +1,5 @@
 require 'urchin_tracking_module/version'
 require 'singleton'
-require 'active_support/core_ext/hash/slice'
 
 def UTM(url, params={})
   UrchinTrackingModule.new(url).tracking(params)
@@ -8,6 +7,11 @@ end
 
 class UrchinTrackingModule
   TRACKING_PARAMETERS = %i(utm_source utm_medium utm_term utm_content utm_campaign)
+  module Slicable
+    def slice(*keys)
+      keys.inject(Hash.new) {|h,k| h.merge(k => self[k]) }
+    end
+  end
 
   def initialize(url)
     @url = url
@@ -29,9 +33,11 @@ class UrchinTrackingModule
   private :defaults
 
   def filtered_params(params)
+    params.extend Slicable unless params.respond_to?(:slice)
     defaults.merge(params.slice(*TRACKING_PARAMETERS))
   end
   private :filtered_params
+
 
   def add_param(url, param_name, param_value)
     uri = URI(url)

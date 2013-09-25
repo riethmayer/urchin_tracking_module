@@ -70,6 +70,10 @@ describe UrchinTrackingModule do
     expect(UrchinTrackingModule.medium).to eq EXAMPLE_CONFIG[:utm_medium]
   end
 
+  it 'ignores non utm params' do
+    expect(UTM(url, foo: 'bar')).not_to match(/foo=bar/)
+  end
+
   describe 'UTM helper' do
     let(:utm) { double }
 

@@ -40,7 +40,6 @@ Your thought's/improvements are welcome :)
 
 ## TODOs
 
-  * remove dependency to Rails
   * remove bonusbox specific `src` param or make this kind of
   additions configurable.
   * `UrchinTrackingModule.configure {|c| c[:utm_source] => 'my_app' }` could have a
