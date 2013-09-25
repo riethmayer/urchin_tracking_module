@@ -81,7 +81,11 @@ class UrchinTrackingModule
     end
 
     def default_source
-      Rails.application.class.parent_name
+      if defined?(Rails)
+        Rails.application.class.parent_name
+      else
+        'urchin_tracking_module'
+      end
     end
     private :default_source
 
