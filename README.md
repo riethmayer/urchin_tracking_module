@@ -1,6 +1,7 @@
 # Urchin Tracking Module
 
 Add google analytics params to your URLs.
+It's the [Google Analytics URL builder](https://support.google.com/analytics/answer/1033867?hl=en) as a gem.
 
 ## Installation
 

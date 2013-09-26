@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = UrchinTrackingModule::VERSION
   spec.authors       = ["Jan Riethmayer"]
   spec.email         = ["jan@riethmayer.de"]
-  spec.description   = %q{Add google analytics urchin tracking module params to your URL.}
+  spec.description   = %q{Add Google Analytics urchin tracking module params to your URLs. It's the [Google Analytics URL builder](https://support.google.com/analytics/answer/1033867?hl=en) as a gem.}
   spec.summary       = %q{utm params for your URL.}
   spec.homepage      = "http://github.com/bonusboxme/urchin_tracking_module"
   spec.license       = "MIT"
