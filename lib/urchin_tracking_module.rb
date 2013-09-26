@@ -1,6 +1,5 @@
 require 'urchin_tracking_module/version'
 require 'singleton'
-require 'active_support/core_ext/hash/slice'
 
 def UTM(url, params={})
   UrchinTrackingModule.new(url).tracking(params)
@@ -8,6 +7,11 @@ end
 
 class UrchinTrackingModule
   TRACKING_PARAMETERS = %i(utm_source utm_medium utm_term utm_content utm_campaign)
+  module Slicable
+    def slice(*keys)
+      keys.inject(Hash.new) {|h,k| h.merge(k => self[k]) }
+    end
+  end
 
   def initialize(url)
     @url = url
@@ -15,8 +19,10 @@ class UrchinTrackingModule
 
   def tracking(params=defaults)
     filtered_params(params).inject(@url) do |url,(name,value)|
-      url = add_param(url, "#{name}", value)
-      url = add_param(url, "src", value) if name == :utm_source
+      unless value.nil?
+        url = add_param(url, "#{name}", value)
+        url = add_param(url, "src", value) if name == :utm_source
+      end
       url
     end
   end
@@ -27,9 +33,11 @@ class UrchinTrackingModule
   private :defaults
 
   def filtered_params(params)
+    params.extend Slicable unless params.respond_to?(:slice)
     defaults.merge(params.slice(*TRACKING_PARAMETERS))
   end
   private :filtered_params
+
 
   def add_param(url, param_name, param_value)
     uri = URI(url)
@@ -79,7 +87,11 @@ class UrchinTrackingModule
     end
 
     def default_source
-      Rails.application.class.parent_name
+      if defined?(Rails)
+        Rails.application.class.parent_name
+      else
+        'urchin_tracking_module'
+      end
     end
     private :default_source
 

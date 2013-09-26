@@ -41,11 +41,8 @@ Your thought's/improvements are welcome :)
 
 ## TODOs
 
-  * remove dependency to Rails
   * remove bonusbox specific `src` param or make this kind of
   additions configurable.
-  * `UrchinTrackingModule.configure {|c| c[:utm_source] => nil }` would generate
-  invalid params. It should pick up defaults instead.
   * `UrchinTrackingModule.configure {|c| c[:utm_source] => 'my_app' }` could have a
   configuration object instead of a hash, to become
   `UrchinTrackingModule.configure {|c| c.utm_source = 'my_app' }`

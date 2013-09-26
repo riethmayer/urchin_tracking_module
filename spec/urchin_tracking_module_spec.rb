@@ -24,6 +24,15 @@ describe UrchinTrackingModule do
     end
   end
 
+  context 'nil parameter values' do
+    let(:params) {{ utm_content: nil }}
+
+    it 'is not tracked' do
+      uri = subject.tracking(params)
+      expect(uri).not_to match(/utm_content=/)
+    end
+  end
+
   describe '.configure' do
     EXAMPLE_CONFIG = {
       utm_source:   'b2b_application',
@@ -59,6 +68,10 @@ describe UrchinTrackingModule do
   it 'configures UrchinTrackingModule.medium' do
     UrchinTrackingModule.configure { |utm| utm[:utm_medium]= EXAMPLE_CONFIG[:utm_medium] }
     expect(UrchinTrackingModule.medium).to eq EXAMPLE_CONFIG[:utm_medium]
+  end
+
+  it 'ignores non utm params' do
+    expect(UTM(url, foo: 'bar')).not_to match(/foo=bar/)
   end
 
   describe 'UTM helper' do
