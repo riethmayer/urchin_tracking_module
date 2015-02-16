@@ -49,7 +49,7 @@ class UrchinTrackingModule
 
   def url_params(uri)
     # conversion to hash e.g. to get rid of duplicate src params
-    params = URI.decode_www_form(uri.query || [])
+    params = URI.decode_www_form(uri.query || '')
     params.inject(Hash.new) { |h,(k,v)| h.merge(k => v) }
   end
   private :url_params
